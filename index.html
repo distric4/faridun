@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Шарипов Фаридун Зокирович — Страница памяти</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=PT+Serif:ital,wght@0,400;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { background: #111118; }
+
+  :root {
+    --bg: #111118;
+    --bg2: #16161f;
+    --bg3: #1c1c28;
+    --gold: #c9a84c;
+    --gold2: #e8c96b;
+    --text: #e8e4dc;
+    --text2: #a09890;
+    --divider: rgba(201,168,76,0.25);
+    --white: #f5f1ea;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'PT Serif', Georgia, serif;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(17,17,24,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--divider);
+    padding: 12px 24px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px; color: var(--text2); letter-spacing: .05em;
+  }
+  nav .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex; align-items: center; gap: 24px;
+  }
+  nav a { color: var(--text2); text-decoration: none; transition: color .2s; }
+  nav a:hover { color: var(--gold); }
+  nav .flame { font-size: 18px; }
+
+  /* HERO */
+  .hero {
+    padding: 48px 24px 48px;
+    background: var(--bg);
+  }
+  .hero-card {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: var(--bg2);
+    border-radius: 12px;
+    border: 1px solid rgba(201,168,76,0.15);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    box-shadow: 0 32px 80px rgba(0,0,0,.6);
+  }
+  .hero-photo {
+    position: relative;
+    min-height: 520px;
+  }
+  .slide {
+    position: absolute; inset: 0;
+    background-size: cover;
+    background-position: top center;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+    animation: kenBurns 8s ease-in-out infinite alternate;
+  }
+  .slide.active { opacity: 1; }
+  @keyframes kenBurns {
+    from { transform: scale(1); }
+    to   { transform: scale(1.05); }
+  }
+  .slide-dots {
+    position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 8px; z-index: 4;
+  }
+  .sdot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(201,168,76,.35); cursor: pointer; transition: background .3s;
+  }
+  .sdot.active { background: var(--gold); }
+  .hero-info {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 56px 56px 56px 48px;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(201,168,76,.1);
+    border: 1px solid var(--divider);
+    border-radius: 32px;
+    padding: 8px 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    color: var(--gold);
+    letter-spacing: .08em;
+    margin-bottom: 28px;
+    align-self: flex-start;
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 3.5vw, 54px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  .hero-dates {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--gold);
+    font-size: clamp(16px, 1.8vw, 22px);
+    font-weight: 300;
+    letter-spacing: .12em;
+    margin-bottom: 4px;
+  }
+  .hero-age {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text2);
+    font-size: 13px;
+    letter-spacing: .05em;
+    margin-bottom: 32px;
+  }
+  .hero-divider {
+    width: 60px; height: 1px;
+    background: var(--gold);
+    margin-bottom: 28px;
+    opacity: .5;
+  }
+  .hero-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--text2);
+    font-size: 20px;
+    line-height: 1.6;
+    border-left: 2px solid var(--gold);
+    padding-left: 20px;
+    margin-bottom: 32px;
+  }
+
+  /* SECTION */
+  section { padding: 80px 24px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .container-wide { max-width: 1100px; margin: 0 auto; }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 40px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--divider);
+  }
+
+  /* BIOGRAPHY */
+  .bio-section { background: var(--bg2); }
+  .bio-block { margin-bottom: 36px; }
+  .bio-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    color: var(--gold);
+    margin-bottom: 12px;
+    font-weight: 400;
+    font-style: italic;
+  }
+  .bio-block p {
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.85;
+    opacity: .9;
+  }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 32px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 5px; top: 8px; bottom: 0;
+    width: 1px; background: var(--divider);
+  }
+  .tl-item {
+    position: relative; margin-bottom: 28px;
+  }
+  .tl-item::before {
+    content: ''; position: absolute; left: -28px; top: 8px;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 8px rgba(201,168,76,.4);
+  }
+  .tl-year {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px; color: var(--gold);
+    letter-spacing: .1em; font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .tl-text {
+    font-size: 15px; color: var(--text); line-height: 1.7;
+  }
+
+  /* GALLERY */
+  .gallery-section { background: var(--bg3); }
+  .gallery-group { margin-bottom: 36px; }
+  .gallery-group:last-child { margin-bottom: 0; }
+  .gallery-group-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; color: var(--text2);
+    letter-spacing: .18em; text-transform: uppercase;
+    margin-bottom: 12px; padding-bottom: 8px;
+    border-bottom: 1px solid var(--divider);
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 8px;
+  }
+  .gallery-item {
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+    background: var(--bg2);
+  }
+  .gallery-item img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: top center;
+    transition: transform .4s ease, filter .4s ease;
+    filter: grayscale(10%);
+  }
+  .gallery-item:hover img { transform: scale(1.04); filter: grayscale(0%); }
+  .gallery-item::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(10,10,18,.5) 100%);
+    opacity: 0; transition: opacity .3s;
+  }
+  .gallery-item:hover::after { opacity: 1; }
+
+  /* LIGHTBOX */
+  .lightbox {
+    display: none;
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0,0,0,.92);
+    align-items: center; justify-content: center;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 90vw; max-height: 90vh;
+    object-fit: contain;
+    border-radius: 3px;
+    box-shadow: 0 0 60px rgba(0,0,0,.8);
+  }
+  .lb-close {
+    position: absolute; top: 20px; right: 24px;
+    font-size: 32px; color: #fff; cursor: pointer;
+    background: none; border: none; line-height: 1;
+    opacity: .7; transition: opacity .2s;
+  }
+  .lb-close:hover { opacity: 1; }
+  .lb-prev, .lb-next {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    font-size: 40px; color: rgba(255,255,255,.6);
+    background: none; border: none; cursor: pointer;
+    padding: 16px; transition: color .2s;
+  }
+  .lb-prev:hover, .lb-next:hover { color: #fff; }
+  .lb-prev { left: 12px; }
+  .lb-next { right: 12px; }
+
+  /* CANDLES */
+  .candles-section { background: var(--bg2); text-align: center; }
+  .candle-count {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 6vw, 72px);
+    color: var(--gold);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .candle-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    color: var(--text2);
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+  .candle-row {
+    display: flex; flex-wrap: wrap; gap: 12px;
+    justify-content: center; margin-bottom: 40px;
+  }
+  .candle-flame {
+    font-size: 36px; cursor: default;
+    animation: flicker 2s ease-in-out infinite alternate;
+  }
+  .candle-flame:nth-child(2n) { animation-delay: .3s; }
+  .candle-flame:nth-child(3n) { animation-delay: .7s; }
+  .candle-flame:nth-child(4n) { animation-delay: 1.1s; }
+  @keyframes flicker {
+    0% { transform: scale(1) rotate(-1deg); opacity: .9; }
+    100% { transform: scale(1.08) rotate(1deg); opacity: 1; }
+  }
+  .candle-btn {
+    display: inline-block;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px; letter-spacing: .1em;
+    padding: 14px 36px; border-radius: 2px;
+    cursor: pointer; transition: all .25s;
+    text-transform: uppercase;
+  }
+  .candle-btn:hover {
+    background: var(--gold);
+    color: var(--bg);
+  }
+
+  /* MEMORY WORDS */
+  .words-section { background: var(--bg); }
+  .memory-form {
+    background: var(--bg2);
+    border: 1px solid var(--divider);
+    border-radius: 4px;
+    padding: 32px;
+    margin-bottom: 40px;
+  }
+  .memory-form h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; color: var(--white);
+    margin-bottom: 20px;
+  }
+  .form-row { display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+  .form-row input, .form-row textarea {
+    flex: 1; min-width: 200px;
+    background: var(--bg3);
+    border: 1px solid var(--divider);
+    color: var(--text);
+    padding: 12px 16px;
+    border-radius: 2px;
+    font-family: 'PT Serif', serif;
+    font-size: 15px;
+    outline: none; transition: border-color .2s;
+  }
+  .form-row textarea { min-height: 100px; resize: vertical; width: 100%; flex: none; }
+  .form-row input:focus, .form-row textarea:focus { border-color: var(--gold); }
+  .form-submit {
+    background: var(--gold);
+    color: var(--bg);
+    border: none;
+    padding: 13px 32px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background .2s;
+  }
+  .form-submit:hover { background: var(--gold2); }
+  .memory-cards { display: flex; flex-direction: column; gap: 20px; }
+  .memory-card {
+    background: var(--bg2);
+    border: 1px solid var(--divider);
+    border-radius: 4px;
+    padding: 24px 28px;
+  }
+  .mc-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
+  .mc-name { font-family: 'Playfair Display', serif; font-size: 17px; color: var(--white); }
+  .mc-role { font-family: 'Montserrat', sans-serif; font-size: 12px; color: var(--text2); letter-spacing: .05em; margin-top: 2px; }
+  .mc-date { font-family: 'Montserrat', sans-serif; font-size: 12px; color: var(--text2); }
+  .mc-text { font-size: 15px; color: var(--text); line-height: 1.75; font-style: italic; opacity: .9; }
+
+  /* FOOTER */
+  footer {
+    background: #0a0a10;
+    border-top: 1px solid var(--divider);
+    padding: 40px 24px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    color: var(--text2);
+    letter-spacing: .05em;
+    line-height: 2;
+  }
+  footer strong { color: var(--text); }
+
+  /* SCROLL REVEAL */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* RESPONSIVE */
+  @media (max-width: 800px) {
+    nav { gap: 16px; font-size: 12px; padding: 10px 16px; overflow-x: auto; flex-wrap: nowrap; white-space: nowrap; }
+    .hero { padding: 24px 16px 32px; }
+    .hero-card { grid-template-columns: 1fr; }
+    .hero-photo { min-height: 320px; max-height: 440px; }
+    .hero-info { padding: 28px 24px 36px; justify-content: flex-start; }
+    .hero-name { font-size: clamp(28px, 8vw, 44px); }
+    .hero-badge { align-self: flex-start; }
+    .hero-divider { margin-bottom: 20px; }
+    .hero-quote { margin-bottom: 0; font-size: 17px; }
+  }
+  @media (max-width: 700px) {
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+    .form-row { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#bio">Биография</a>
+    <a href="#gallery">Галерея</a>
+    <a href="#candles">Свечи</a>
+    <a href="#words">Слова памяти</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="hero">
+  <div class="hero-card">
+    <div class="hero-photo">
+      <div class="slide active" style="background-image:url('photos/slide4.webp'); background-position: center 20%;"></div>
+      <div class="slide" style="background-image:url('photos/slide1.webp'); background-position: center 15%;"></div>
+      <div class="slide" style="background-image:url('photos/slide2.webp'); background-position: center 20%;"></div>
+      <div class="slide" style="background-image:url('photos/slide3.webp'); background-position: center 15%;"></div>
+      <div class="slide-dots">
+        <span class="sdot active" onclick="goSlide(0)"></span>
+        <span class="sdot" onclick="goSlide(1)"></span>
+        <span class="sdot" onclick="goSlide(2)"></span>
+        <span class="sdot" onclick="goSlide(3)"></span>
+      </div>
+    </div>
+    <div class="hero-info">
+      <div class="hero-badge"><span>🎖️</span><span>Герой Специальной Военной Операции</span></div>
+      <h1 class="hero-name">Шарипов<br>Фаридун<br>Зокирович</h1>
+      <p class="hero-dates">28.09.1999 — 23.10.2025</p>
+      <p class="hero-age">(прожил 26 лет)</p>
+      <div class="hero-divider"></div>
+      <blockquote class="hero-quote">Помним. Любим. Скорбим.</blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- BIOGRAPHY -->
+<section class="bio-section" id="bio">
+  <div class="container">
+    <h2 class="section-title reveal">Биография</h2>
+
+    <div class="bio-block reveal">
+      <p>Шарипов Фаридун Зокирович — наш сын, брат, друг. Тот, кто прожил яркую, честную жизнь и до конца оставался верен себе и своей Родине. Мы помним его улыбку, его силу духа и его доброе сердце.</p>
+    </div>
+
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="tl-year">28 сентября 1999</div>
+        <div class="tl-text">Родился в городе Усолье-Сибирское Иркутской области.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Детство и школа</div>
+        <div class="tl-text">Учился в школе №6 города Усолье-Сибирское. В связи с переездом семьи продолжил учёбу в Тихоновке — в Верхне-Идинской школе, которую окончил до 9 класса.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2016</div>
+        <div class="tl-text">Переехал в Иркутск. Поступил в ремесленное училище по специальности «Каменщик». Проучился год, и жизнь потекла своим чередом — новые знакомства, планы, надежды.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Гражданская жизнь</div>
+        <div class="tl-text">Работал рыбообработчиком на предприятии «Рыбко». Был на хорошем счету у начальства, трудился добросовестно и ответственно — таким он был во всём, за что брался.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Апрель 2023</div>
+        <div class="tl-text">Ушёл добровольцем на Специальную военную операцию. Не ждал призыва — сам принял решение встать на защиту Родины.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">24 ноября 2023</div>
+        <div class="tl-text">Вернулся домой. Снова работал, жил, строил планы на будущее.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">18 ноября 2024</div>
+        <div class="tl-text">Заключил контракт с Министерством обороны Российской Федерации в Казани. Вновь встал в строй — по зову долга и совести.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">23 октября 2025</div>
+        <div class="tl-text">Погиб при выполнении воинского долга. Навсегда остался в наших сердцах — молодым, смелым, живым.</div>
+      </div>
+    </div>
+
+    <div class="bio-block reveal" style="margin-top: 40px;">
+      <h3>Память</h3>
+      <p>
+        Фаридун прожил жизнь, полную движения и искреннего участия. Он не стоял в стороне — ни в труде, ни в дружбе, ни перед лицом испытаний. Дважды он выбирал передовую — и дважды это был его осознанный, добровольный выбор.
+        <br><br>
+        Те, кто знал его рядом — в цеху, в полевых условиях, в обычной жизни — запомнили его надёжным, открытым и настоящим. Таким он и останется для нас навсегда.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section" id="gallery">
+  <div class="container-wide">
+    <h2 class="section-title reveal">Фотогалерея</h2>
+
+    <!-- Детство -->
+    <div class="gallery-group reveal">
+      <p class="gallery-group-title">Детство</p>
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openLightbox(0)"><img src="photos/photo_1.jpg" alt="Детство" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(1)"><img src="photos/photo_2.jpg" alt="Детство" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(2)"><img src="photos/photo_3.jpg" alt="Детство" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(3)"><img src="photos/photo_4.jpg" alt="Детство" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(4)"><img src="photos/photo_5.jpg" alt="Детство" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(5)"><img src="photos/photo_6.jpg" alt="Детство" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(6)"><img src="photos/photo_7.jpg" alt="Детство" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(7)"><img src="photos/photo_8.jpg" alt="Детство" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(8)"><img src="photos/photo_9.jpg" alt="Детство" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(9)"><img src="photos/photo_10.jpg" alt="Детство" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(10)"><img src="photos/photo_11.jpg" alt="Детство" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(11)"><img src="photos/photo_12.jpg" alt="Детство" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(12)"><img src="photos/photo_13.jpg" alt="Детство" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(13)"><img src="photos/photo_14.jpg" alt="Детство" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(14)"><img src="photos/photo_15.jpg" alt="Детство" loading="lazy"></div>
+      </div>
+    </div>
+
+    <!-- На гражданке -->
+    <div class="gallery-group reveal">
+      <p class="gallery-group-title">На гражданке</p>
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openLightbox(15)"><img src="photos/photo_16.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(16)"><img src="photos/photo_17.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(17)"><img src="photos/photo_18.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(18)"><img src="photos/photo_20.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(19)"><img src="photos/photo_21.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(20)"><img src="photos/photo_24.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(21)"><img src="photos/photo_26.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(22)"><img src="photos/photo_27.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(23)"><img src="photos/photo_28.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(24)"><img src="photos/photo_29.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(25)"><img src="photos/photo_30.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(26)"><img src="photos/photo_31.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(27)"><img src="photos/photo_34.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(28)"><img src="photos/photo_35.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(29)"><img src="photos/photo_37.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(30)"><img src="photos/photo_38.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(31)"><img src="photos/photo_40.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(32)"><img src="photos/photo_41.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(33)"><img src="photos/photo_46.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(34)"><img src="photos/photo_47.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(35)"><img src="photos/photo_48.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(36)"><img src="photos/photo_52.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(37)"><img src="photos/photo_54.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(38)"><img src="photos/photo_57.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(39)"><img src="photos/photo_62.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(40)"><img src="photos/photo_63.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(41)"><img src="photos/photo_67.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(42)"><img src="photos/photo_68.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(43)"><img src="photos/photo_71.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(44)"><img src="photos/photo_73.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(45)"><img src="photos/photo_97.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(46)"><img src="photos/photo_104.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(47)"><img src="photos/photo_107.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(48)"><img src="photos/photo_109.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(49)"><img src="photos/photo_110.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(50)"><img src="photos/photo_111.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(51)"><img src="photos/photo_112.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(52)"><img src="photos/photo_113.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(53)"><img src="photos/photo_114.jpg" alt="На гражданке" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(54)"><img src="photos/photo_115.jpg" alt="На гражданке" loading="lazy"></div>
+      </div>
+    </div>
+
+    <!-- На службе -->
+    <div class="gallery-group reveal">
+      <p class="gallery-group-title">На службе</p>
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openLightbox(55)"><img src="photos/photo_19.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(56)"><img src="photos/photo_32.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(57)"><img src="photos/photo_33.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(58)"><img src="photos/photo_36.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(59)"><img src="photos/photo_39.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(60)"><img src="photos/photo_43.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(61)"><img src="photos/photo_44.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(62)"><img src="photos/photo_53.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(63)"><img src="photos/photo_55.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(64)"><img src="photos/photo_56.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(65)"><img src="photos/photo_58.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(66)"><img src="photos/photo_60.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(67)"><img src="photos/photo_64.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(68)"><img src="photos/photo_65.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(69)"><img src="photos/photo_74.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(70)"><img src="photos/photo_75.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(71)"><img src="photos/photo_76.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(72)"><img src="photos/photo_77.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(73)"><img src="photos/photo_78.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(74)"><img src="photos/photo_79.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(75)"><img src="photos/photo_80.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(76)"><img src="photos/photo_81.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(77)"><img src="photos/photo_82.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(78)"><img src="photos/photo_83.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(79)"><img src="photos/photo_84.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(80)"><img src="photos/photo_85.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(81)"><img src="photos/photo_86.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(82)"><img src="photos/photo_87.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(83)"><img src="photos/photo_89.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(84)"><img src="photos/photo_90.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(85)"><img src="photos/photo_93.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(86)"><img src="photos/photo_96.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(87)"><img src="photos/photo_98.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(88)"><img src="photos/photo_100.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(89)"><img src="photos/photo_101.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(90)"><img src="photos/photo_102.jpg" alt="На службе" loading="lazy"></div>
+        <div class="gallery-item" onclick="openLightbox(91)"><img src="photos/photo_103.jpg" alt="На службе" loading="lazy"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CANDLES -->
+<section class="candles-section" id="candles">
+  <div class="container">
+    <h2 class="section-title reveal" style="justify-content: center;">Свечи памяти</h2>
+    <div class="reveal">
+      <p class="candle-count" id="candleCount">0</p>
+      <p class="candle-label">Зажжённых свечей</p>
+      <div class="candle-row" id="candleRow"></div>
+      <button class="candle-btn" onclick="lightCandle()">🕯️ &nbsp;Зажечь свечу</button>
+      <p style="margin-top: 20px; font-family: 'Montserrat',sans-serif; font-size: 12px; color: var(--text2);">Спасибо за вашу память</p>
+    </div>
+  </div>
+</section>
+
+<!-- MEMORY WORDS -->
+<section class="words-section" id="words">
+  <div class="container">
+    <h2 class="section-title reveal">Слова памяти</h2>
+
+    <div class="memory-cards" id="memoryCards">
+      <!-- Filled by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p style="font-size: 18px; margin-bottom: 12px;">🕯️</p>
+  <p><strong>Шарипов Фаридун Зокирович</strong></p>
+  <p>28.09.1999 — 23.10.2025</p>
+  <p style="margin-top: 12px; opacity: .5;">Страница памяти создана близкими и друзьями</p>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lb-close" onclick="closeLightbox()">×</button>
+  <button class="lb-prev" onclick="changeLb(-1); event.stopPropagation();">‹</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lb-next" onclick="changeLb(1); event.stopPropagation();">›</button>
+</div>
+
+<script>
+// Hero slideshow
+let slideIdx = 0;
+const slides = document.querySelectorAll('.hero-photo .slide');
+const dots = document.querySelectorAll('.sdot');
+function goSlide(n) {
+  slides[slideIdx].classList.remove('active');
+  dots[slideIdx].classList.remove('active');
+  slideIdx = (n + slides.length) % slides.length;
+  slides[slideIdx].classList.add('active');
+  dots[slideIdx].classList.add('active');
+}
+setInterval(() => goSlide(slideIdx + 1), 5000);
+
+// Swipe support
+(function() {
+  const frame = document.querySelector('.hero-photo');
+  let tx = 0;
+  frame.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+  frame.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - tx;
+    if (Math.abs(dx) > 40) goSlide(slideIdx + (dx < 0 ? 1 : -1));
+  }, { passive: true });
+})();
+
+// Gallery photos
+const galleryPhotos = [
+  // Детство (0–14)
+  'photos/photo_1.jpg','photos/photo_2.jpg','photos/photo_3.jpg','photos/photo_4.jpg','photos/photo_5.jpg',
+  'photos/photo_6.jpg','photos/photo_7.jpg','photos/photo_8.jpg','photos/photo_9.jpg','photos/photo_10.jpg',
+  'photos/photo_11.jpg','photos/photo_12.jpg','photos/photo_13.jpg','photos/photo_14.jpg','photos/photo_15.jpg',
+  // На гражданке (15–54)
+  'photos/photo_16.jpg','photos/photo_17.jpg','photos/photo_18.jpg','photos/photo_20.jpg','photos/photo_21.jpg',
+  'photos/photo_24.jpg','photos/photo_26.jpg','photos/photo_27.jpg','photos/photo_28.jpg','photos/photo_29.jpg',
+  'photos/photo_30.jpg','photos/photo_31.jpg','photos/photo_34.jpg','photos/photo_35.jpg','photos/photo_37.jpg',
+  'photos/photo_38.jpg','photos/photo_40.jpg','photos/photo_41.jpg','photos/photo_46.jpg','photos/photo_47.jpg',
+  'photos/photo_48.jpg','photos/photo_52.jpg','photos/photo_54.jpg','photos/photo_57.jpg','photos/photo_62.jpg',
+  'photos/photo_63.jpg','photos/photo_67.jpg','photos/photo_68.jpg','photos/photo_71.jpg','photos/photo_73.jpg',
+  'photos/photo_97.jpg','photos/photo_104.jpg','photos/photo_107.jpg','photos/photo_109.jpg','photos/photo_110.jpg',
+  'photos/photo_111.jpg','photos/photo_112.jpg','photos/photo_113.jpg','photos/photo_114.jpg','photos/photo_115.jpg',
+  // На службе (55–91)
+  'photos/photo_19.jpg','photos/photo_32.jpg','photos/photo_33.jpg','photos/photo_36.jpg','photos/photo_39.jpg',
+  'photos/photo_43.jpg','photos/photo_44.jpg','photos/photo_53.jpg','photos/photo_55.jpg','photos/photo_56.jpg',
+  'photos/photo_58.jpg','photos/photo_60.jpg','photos/photo_64.jpg','photos/photo_65.jpg','photos/photo_74.jpg',
+  'photos/photo_75.jpg','photos/photo_76.jpg','photos/photo_77.jpg','photos/photo_78.jpg','photos/photo_79.jpg',
+  'photos/photo_80.jpg','photos/photo_81.jpg','photos/photo_82.jpg','photos/photo_83.jpg','photos/photo_84.jpg',
+  'photos/photo_85.jpg','photos/photo_86.jpg','photos/photo_87.jpg','photos/photo_89.jpg','photos/photo_90.jpg',
+  'photos/photo_93.jpg','photos/photo_96.jpg','photos/photo_98.jpg','photos/photo_100.jpg','photos/photo_101.jpg',
+  'photos/photo_102.jpg','photos/photo_103.jpg'
+];
+let lbIdx = 0;
+
+function openLightbox(idx) {
+  lbIdx = idx;
+  document.getElementById('lbImg').src = galleryPhotos[idx];
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(e) {
+  if (!e || e.target === document.getElementById('lightbox') || e.target.classList.contains('lb-close')) {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+function changeLb(dir) {
+  lbIdx = (lbIdx + dir + galleryPhotos.length) % galleryPhotos.length;
+  document.getElementById('lbImg').src = galleryPhotos[lbIdx];
+}
+document.addEventListener('keydown', e => {
+  if (document.getElementById('lightbox').classList.contains('open')) {
+    if (e.key === 'ArrowLeft') changeLb(-1);
+    if (e.key === 'ArrowRight') changeLb(1);
+    if (e.key === 'Escape') closeLightbox({ target: document.getElementById('lightbox') });
+  }
+});
+
+// Candles — shared counter via CountAPI + localStorage fallback
+const CANDLE_API = 'https://api.countapi.xyz/hit/sharipov-faridun-zokir/candles';
+const CANDLE_GET = 'https://api.countapi.xyz/get/sharipov-faridun-zokir/candles';
+let candles = 0;
+let candleLit = false;
+try { candleLit = !!localStorage.getItem('sharipov_lit'); } catch(e) {}
+
+function updateCandles() {
+  document.getElementById('candleCount').textContent = candles;
+  const row = document.getElementById('candleRow');
+  row.innerHTML = '';
+  const show = Math.min(candles, 30);
+  for (let i = 0; i < show; i++) {
+    const s = document.createElement('span');
+    s.className = 'candle-flame';
+    s.textContent = '🕯️';
+    s.style.animationDelay = (i * 0.15) + 's';
+    row.appendChild(s);
+  }
+  if (candles > 30) {
+    const more = document.createElement('span');
+    more.style.cssText = 'font-family:Montserrat,sans-serif;font-size:13px;color:var(--text2);align-self:center';
+    more.textContent = `и ещё ${candles - 30}…`;
+    row.appendChild(more);
+  }
+  if (candleLit) {
+    const btn = document.querySelector('.candle-btn');
+    if (btn) { btn.textContent = '✓ Свеча зажжена'; btn.disabled = true; btn.style.opacity = '.6'; }
+  }
+}
+
+async function lightCandle() {
+  if (candleLit) return;
+  candleLit = true;
+  try { localStorage.setItem('sharipov_lit', '1'); } catch(e) {}
+  try {
+    const r = await fetch(CANDLE_API);
+    if (r.ok) { const d = await r.json(); candles = d.value || candles + 1; }
+    else { candles++; }
+  } catch(e) { candles++; }
+  updateCandles();
+}
+
+// Load initial count
+(async () => {
+  try {
+    const r = await fetch(CANDLE_GET);
+    if (r.ok) { const d = await r.json(); candles = d.value || 0; }
+  } catch(e) {
+    try { candles = parseInt(localStorage.getItem('sharipov_candles') || '0'); } catch(e2) {}
+  }
+  updateCandles();
+})();
+
+// Memory words
+const defaultMemories = [
+  { name: 'Семья', role: 'родные', date: '2025-10-28', text: 'Родной наш Фаридун. Ты был светом в нашем доме — тёплым, надёжным, живым. Нам не хватает тебя каждый день. Спи спокойно, герой.' },
+];
+let memories = defaultMemories;
+try {
+  const saved = JSON.parse(localStorage.getItem('sharipov_memories') || '[]');
+  if (saved.length) memories = [...saved, ...defaultMemories];
+} catch(e) {}
+function renderMemories() {
+  const el = document.getElementById('memoryCards');
+  el.innerHTML = memories.map(m => `
+    <div class="memory-card reveal">
+      <div class="mc-header">
+        <div><div class="mc-name">${esc(m.name)}</div><div class="mc-role">${esc(m.role)}</div></div>
+        <div class="mc-date">📅 ${m.date}</div>
+      </div>
+      <p class="mc-text">${esc(m.text)}</p>
+    </div>
+  `).join('');
+  el.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+}
+function esc(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function submitMemory() {
+  const name = document.getElementById('memName').value.trim();
+  const role = document.getElementById('memRole').value.trim();
+  const text = document.getElementById('memText').value.trim();
+  if (!name || !text) { alert('Пожалуйста, укажите ваше имя и текст.'); return; }
+  const today = new Date().toISOString().slice(0,10);
+  const newMemory = { name, role: role || 'посетитель', date: today, text };
+  memories = [newMemory, ...memories];
+  try {
+    const userMemories = JSON.parse(localStorage.getItem('sharipov_memories') || '[]');
+    localStorage.setItem('sharipov_memories', JSON.stringify([newMemory, ...userMemories]));
+  } catch(e) {}
+  document.getElementById('memName').value = '';
+  document.getElementById('memRole').value = '';
+  document.getElementById('memText').value = '';
+  renderMemories();
+}
+renderMemories();
+
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
